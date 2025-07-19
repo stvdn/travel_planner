@@ -14,7 +14,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-odel User {
+model User {
   id            String    @id @default(cuid())
   name          String?
   email         String    @unique
@@ -22,8 +22,10 @@ odel User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  updatedAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt // Note: This line appears to be a duplicate or intended as different fields (e.g., createdAt and updatedAt)
+  trips         Trip[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt 
 }
 
 model Account {
@@ -64,4 +66,19 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
+}
+
+model Trip {
+  id String @id @default(cuid())
+  title String
+  description String
+  imageUrl String?
+  startDate DateTime
+  endDate DateTime
+  userId String
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
