@@ -20,10 +20,10 @@ export default function Navbar({ session }: { session: Session | null }) {
                 <div className="flex items-center space-x-4">
                     {session ? (
                         <>
-                            <Link href={"/"} className="text-slate-600 hover:text-sky-500">
+                            <Link href={"/trips"} className="text-slate-600 hover:text-sky-500">
                                 Viajes
                             </Link>
-                            <Link href={"/"} className="text-slate-600 hover:text-sky-500">
+                            <Link href={"/globe"} className="text-slate-600 hover:text-sky-500">
                                 Mundo
                             </Link>
                             <button

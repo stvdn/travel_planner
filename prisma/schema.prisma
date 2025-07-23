@@ -23,7 +23,6 @@ model User {
   accounts      Account[]
   sessions      Session[]
   trips         Trip[]
-
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt 
 }
@@ -41,7 +40,6 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -54,10 +52,10 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
@@ -76,9 +74,21 @@ model Trip {
   startDate DateTime
   endDate DateTime
   userId String
-
-  user User @relation(fields: [userId], references: [id])
-
+  locations Location[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Location {
+  id String @id @default(cuid())
+  locationTitle String
+  lat Float
+  lng Float
+  tripId String
+  order Int @default(0)
+  createdAt DateTime @default(now())
+  
+  trip Trip @relation(fields: [tripId], references: [id])
 }
