@@ -1,8 +1,16 @@
-import { Location } from "@/app/generated/prisma";
 import { auth } from "@/auth";
 import { getCountryFromCoordinates } from "@/lib/actions/geocode";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+
+type LocationWithTripTitle = {
+  locationTitle: string;
+  lat: number;
+  lng: number;
+  trip: {
+    title: string;
+  };
+};
 
 export async function GET() {
   try {
@@ -30,7 +38,7 @@ export async function GET() {
     });
 
     const transformedLocations = await Promise.all(
-      locations.map(async (loc: any) => {
+      locations.map(async (loc: LocationWithTripTitle) => {
         const geocodeResult = await getCountryFromCoordinates(loc.lat, loc.lng);
         return {
           name: `${loc.trip.title} - ${geocodeResult.formattedAddress}`,
@@ -43,7 +51,7 @@ export async function GET() {
 
     return NextResponse.json(transformedLocations);
   } catch (err) {
-    console.log("aaaaaaaaaaa", err);
+    console.log(err);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

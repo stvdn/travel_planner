@@ -1,4 +1,18 @@
-("");
+"use server";
+
+interface AddressComponent {
+  long_name: string;
+  short_name: string;
+  types: string[];
+}
+
+interface GeocodeAPIResult {
+  results: {
+    formatted_address: string;
+    address_components: AddressComponent[];
+  }[];
+}
+
 interface GeocodeResult {
   country: string;
   formattedAddress: string;
@@ -13,14 +27,15 @@ export async function getCountryFromCoordinates(
     `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`
   );
 
-  const data = await reponse.json();
+  const data: GeocodeAPIResult = await reponse.json();
 
   const result = data.results[0];
-  const countryComponent = result.address_components.find((component: any) =>
+  const countryComponent = result.address_components.find((component) =>
     component.types.includes("country")
   );
+
   return {
-    country: countryComponent.long_name || "Desconocido",
+    country: countryComponent?.long_name ?? "Desconocido",
     formattedAddress: result.formatted_address,
   };
 }

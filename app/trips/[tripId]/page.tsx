@@ -11,7 +11,7 @@ export default async function TripDetail({
     const session = await auth();
 
     if (!session || !session.user) {
-        return (<div>No autenticado, dar clic en el botón "Ingresar"</div>)
+        return (<div>No autenticado, dar clic en el botón &quot;Ingresar&quot;</div>)
     }
 
     const trip = await prisma.trip.findFirst({
