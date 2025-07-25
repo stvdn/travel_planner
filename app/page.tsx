@@ -5,7 +5,6 @@ import { ClockIcon, MapIcon, RefreshCwIcon } from "lucide-react";
 export default async function Home() {
   const session = await auth();
   const isLoggedIn = !!session?.user;
-  console.log(isLoggedIn)
 
   return (
     <div className="flex flex-col min-h-screen">

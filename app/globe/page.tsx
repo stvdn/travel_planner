@@ -15,7 +15,7 @@ export default function GlobePage() {
     const globeRef = useRef<GlobeMethods | undefined>(undefined);
     const [visitedCountries, setVisitedCountries] = useState<Set<string>>(new Set());
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [locations, setLocations] = useState<TransformedLocation>();
+    const [locations, setLocations] = useState<TransformedLocation[]>();
 
     useEffect(() => {
         const fetchLocations = async () => {
