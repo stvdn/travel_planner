@@ -2,8 +2,6 @@
 
 A modern travel planning web application built with **Next.js**, **TypeScript**, and **Prisma**, **PostgreSQL** allowing users to log and visualize their trips around the world.
 
----
-
 ## 🚀 Features
 
 - 🌐 Interactive 3D globe to show visited countries
@@ -12,8 +10,6 @@ A modern travel planning web application built with **Next.js**, **TypeScript**,
 - 🔒 Secure authentication
 - ☁️ API-based trip management
 
----
-
 ## 🛠️ Tech Stack
 
 - **Frontend**: Next.js 14, React, TypeScript, TailwindCSS
@@ -21,8 +17,6 @@ A modern travel planning web application built with **Next.js**, **TypeScript**,
 - **Database**: PostgreSQL managed through Prisma ORM
 - **Deployment**: Vercel 
 - **Other Tools**: react-globe.gl, Lucide icons
-
----
 
 ## 📦 Getting Started
 
