@@ -2,14 +2,10 @@
 
 A modern travel planning web application built with **Next.js**, **TypeScript**, and **Prisma**, **PostgreSQL** allowing users to log and visualize their trips around the world.
 
----
-
 ## ✨ Live Demo
 
 Experience the application live!
-[**Visit Travel Planner (Link to your Vercel deployment here)**](https://travel-planner-gamma-green.vercel.app/)
-
----
+[**Visit Travel Planner **](https://travel-planner-gamma-green.vercel.app/)
 
 ## 📸 Screenshots
 
